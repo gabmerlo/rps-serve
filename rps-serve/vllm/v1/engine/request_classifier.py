@@ -32,8 +32,7 @@ class DummyRequestClassifier(BaseRequestClassifier):
         return "rocks"
 
 
-class NaiveRequestClassifier(BaseRequestClassifier):
-           
+class NaiveRequestClassifier(BaseRequestClassifier):   
     def classify(self, request: EngineCoreRequest) -> str:
         # Video inputs & multi image inputs
         if (
@@ -70,52 +69,42 @@ class SmartRequestClassifier(BaseRequestClassifier):
         "Qwen2.5-VL-3B-Instruct": {
             "image_token_index": 151655,
             "video_token_index": 151656,
-
         },
         "gemma-3-4b-it": {
             "image_token_index": 262144,
             "video_token_index": -1,
-
         },
         "llava-onevision-qwen2-7b-ov-chat-hf": {
             "image_token_index": 151646,
             "video_token_index": 151647,
-
         },
         "Qwen2.5-VL-7B-Instruct": {
             "image_token_index": 151655,
             "video_token_index": 151656,
-
         },
         "gemma-3-12b-it": {
             "image_token_index": 262144,
             "video_token_index": -1,
-
         },
         "pixtral-12b": {
             "image_token_index": 10,
             "video_token_index": -1,
-
         },
         "llava-onevision-qwen2-72b-ov-chat-hf": {
             "image_token_index": 151646,
             "video_token_index": 151647,
-
         },
         "InternVL3_5-38B-HF": {
             "image_token_index": 151671,
             "video_token_index": 151678,
-
         },
         "gemma-4-31B-it": {
             "image_token_index": 258880,
             "video_token_index": 258884,
-
         },
         "Qwen3.5-27B": {
             "image_token_index": 248056,
             "video_token_index": 248057,
-
         },
     }
 
