@@ -33,15 +33,6 @@ class DummyRequestClassifier(BaseRequestClassifier):
 
 
 class NaiveRequestClassifier(BaseRequestClassifier):
-
-
-    @staticmethod
-    def _cluster_to_category(pipeline) -> dict[int, str]:
-        #Labels clusters 
-        centers = pipeline[-1].cluster_centers_
-        assert len(centers) == 3, "expected k=3 clusters"
-        order = sorted(range(3), key=lambda i: float(centers[i].sum()))
-        return {order[0]: "sand", order[1]: "pebbles", order[2]: "rocks"}
            
     def classify(self, request: EngineCoreRequest) -> str:
         # Video inputs & multi image inputs
@@ -128,6 +119,15 @@ class SmartRequestClassifier(BaseRequestClassifier):
         },
     }
 
+    @staticmethod
+    def _cluster_to_category(pipeline) -> dict[int, str]:
+        #Labels clusters 
+        #K-means cluster ids are arbitrary, so this stays correct after retraining.
+        centers = pipeline[-1].cluster_centers_
+        assert len(centers) == 3, "expected k=3 clusters"
+        order = sorted(range(3), key=lambda i: float(centers[i].sum()))
+        return {order[0]: "sand", order[1]: "pebbles", order[2]: "rocks"}
+        
     def __init__(self, model: str) -> None:
         model_name = model.split("/")[-1]
 
